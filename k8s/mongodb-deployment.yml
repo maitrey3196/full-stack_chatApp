@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: mongodb-deployment
   namespace: chat-app
+
 spec:
   replicas: 1
   selector:
@@ -12,7 +13,7 @@ spec:
     metadata:
       name: mongodb-pod
       namespace: chat-app
-      labels: 
+      labels:
         app: mongodb
     spec:
       containers:
@@ -24,11 +25,8 @@ spec:
         - name: MONGO_INITDB_ROOT_USERNAME
           value: mongoadmin
         - name: MONGO_INITDB_ROOT_PASSWORD
-          value: secret
+          value: secret 
       volumes:
-      - name: mongo-data
+      - name: mongodb-storage
         persistentVolumeClaim:
-          claimName: mongodb-pvc   
-
-
-
+          claimName: mongodb-pvc

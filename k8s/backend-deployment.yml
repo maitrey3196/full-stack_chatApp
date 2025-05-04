@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: backend-deployment
   namespace: chat-app
+
 spec:
   replicas: 1
   selector:
@@ -12,12 +13,12 @@ spec:
     metadata:
       name: backend-pod
       namespace: chat-app
-      labels: 
+      labels:
         app: backend
     spec:
       containers:
       - name: chatapp-backend
-        image: trainwithshubham/chatapp-backend:latest
+        image: maitrey3196/chatpp-backend:latest
         ports:
         - containerPort: 5001
         env:
@@ -29,6 +30,6 @@ spec:
           valueFrom:
             secretKeyRef:
               name: chatapp-secrets
-              key: jwt 
+              key: jwt
         - name: PORT
           value: "5001"
